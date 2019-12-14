@@ -1,5 +1,4 @@
 import java.io.IOException;
-import java.io.File;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -21,9 +20,7 @@ public class MatrixMultiply {
         private Text map_key = new Text();
         private Text map_value = new Text();
 
-        /**
-         * 执行map()函数前先由conf.get()得到main函数中提供的必要变量， 这也是MapReduce中共享变量的一种方式
-         */
+
         public void setup(Context context) throws IOException {
             Configuration conf = context.getConfiguration();
             columnN = conf.getInt("columnN", 4);
@@ -96,55 +93,17 @@ public class MatrixMultiply {
         }
     }
 
-    /**
-     * main函数
-     * <p>
-     * Usage:
-     *
-     * <p>
-     * <code>MatrixMultiply  inputPathM inputPathN outputPath</code>
-     *
-     * <p>
-     * 从输入文件名称中得到矩阵M的行数和列数，以及矩阵N的列数，作为重要参数传递给mapper和reducer
-     *
-     * @param args 输入文件目录地址M和N以及输出目录地址
-     *
-     * @throws Exception
-     */
-
     public static void main(String[] args)
             throws Exception {
-
-        /*NEEDS FIXING!!!
-        if (args.length != 3) {
-            System.err
-                    .println("Usage: MatrixMultiply <inputPathM> <inputPathN> <outputPath>");
-            System.exit(2);
-        }
-        else {
-            String[] infoTupleM = args[0].split("_");
-            rowM = Integer.parseInt(infoTupleM[1]);
-            columnM = Integer.parseInt(infoTupleM[2]);
-            String[] infoTupleN = args[1].split("_");
-            columnN = Integer.parseInt(infoTupleN[2]);
-        }
-        */
-        //Huge thanks to Damao Liu and Baidu!!!
-        //String[] fileNames = file.list() to obtain file news of certain directory!
-        String path = args[0];
-        File f = new File(path);
-        String[] inputFiles = f.list();
-        String[] infoTupleM = inputFiles[0].split("_");
-        rowM = Integer.parseInt(infoTupleM[1]);
-        columnM = Integer.parseInt(infoTupleM[2]);
-        String[] infoTupleN = inputFiles[1].split("_");
-        columnN = Integer.parseInt(infoTupleN[2]);
+        String a1 = args[3];
+        String a2 = args[4];
+        String a3 = args[5];
 
         Configuration conf = new Configuration();
         /** 设置三个全局共享变量 **/
-        conf.setInt("rowM", rowM);
-        conf.setInt("columnM", columnM);
-        conf.setInt("columnN", columnN);
+        conf.setInt("rowM", Integer.parseInt(a1));
+        conf.setInt("columnM", Integer.parseInt(a2));
+        conf.setInt("columnN", Integer.parseInt(a3));
 
         Job job = new Job(conf, "MatrixMultiply");
         job.setJarByClass(MatrixMultiply.class);
