@@ -11,6 +11,7 @@ input path: 输入路径<br/>
 output path: 输出路径<br/>
 
 #screenshots
+
 screenshots路径中为基于NewInstance.txt中散点的聚类可视化结果，使用R语言中ggplot2包绘制。
 
 图片的命名格式为：K-IterationNum
