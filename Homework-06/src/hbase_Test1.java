@@ -7,7 +7,7 @@ import java.io.IOException;
 
 
 /**
- * Created by hadoopuser on 8/14/19.
+ * Created by Dealu on 12/2/19.
  */
 
 public class hbase_Test1 {
