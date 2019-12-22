@@ -7,13 +7,13 @@
 
 ### Sales.java
 能统计某一省份的双十一热门销售产品，并按数据集中item_id出现顺序输出。打包后，运行：
-> hadoop jar Sales.jar <file input path> <file output path> <province>
+> hadoop jar Sales.jar #file input path #file output path #province
 
 注意：province需要以汉字形式输入
 
 ### Hot.java
 能统计某一省份的双十一热门产品（即浏览点击、关注、加入购物车、购买总数），并按数据集中item_id出现顺序输出。打包后，运行：
-> hadoop jar Hot.jar <file input path> <file output path> <province>
+> hadoop jar Hot.jar #file input path #file output path #province
 
 注意：province需要以汉字形式输入。得到各产品在各省份的销售/热度情况后，需导入Excel/Matlab/Hive/MySQL中进行排序分析。
 > 考虑到数据量不到20000行，使用MapReduce反而会降低效率
