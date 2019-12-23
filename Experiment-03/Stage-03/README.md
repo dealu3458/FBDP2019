@@ -4,7 +4,7 @@
 使用IntelliJ IDEA并基于Spark操纵DataFrame编程
 
 ## screenshots
-IntelliJ IDEA代码界面、DateFrame输出文件截图等
+IntelliJ IDEA代码界面、Spark-shell Scala输出截图
 
 ## results
 随机选取五个省份（上海、台湾、四川、甘肃、重庆）运行本程序后得到的结果
